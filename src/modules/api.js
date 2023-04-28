@@ -1,5 +1,5 @@
 export const fetchUser = () => {
   return new Promise((resolve) => {
-    setTimeout(() => resolve({ name: "zerobase" }), 2000);
+    setTimeout(() => resolve({ name: "ikjun" }), 2000);
   });
 };
