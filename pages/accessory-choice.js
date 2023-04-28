@@ -6,11 +6,18 @@ import Radio from "../src/components/Radio";
 
 export default function accessoryChoice() {
   const router = useRouter();
-  // const [selectedAccessory, setSelectedAccessory] = useState("");
+  const [selectedAccessory, setSelectedAccessory] = useState("");
+
+  const goNextPage = () => {
+    localStorage.setItem("selected_accessory", selectedAccessory);
+    router.push("/complete");
+  };
 
   // const onChangeHandler = (e) => {
   //   setSelectedAccessory(e.target.value);
   // };
+
+  console.log(selectedAccessory);
 
   return (
     <div className="container">
@@ -41,7 +48,10 @@ export default function accessoryChoice() {
         />
         keyboard
       </label> */}
-      <RadioGroup name="accessory" onChange={(state) => console.log(state)}>
+      <RadioGroup
+        name="accessory"
+        onChange={(state) => setSelectedAccessory(state)}
+      >
         <Radio id="monitor" name="accessory" value="monitor" label="monitor" />
         <Radio
           id="keyboard"
@@ -50,9 +60,7 @@ export default function accessoryChoice() {
           label="keyboard"
         />
       </RadioGroup>
-      <BottomButton onClick={() => router.push("/complete")}>
-        완료 화면으로 넘어가기
-      </BottomButton>
+      <BottomButton onClick={goNextPage}>완료 화면으로 넘어가기</BottomButton>
     </div>
   );
 }
